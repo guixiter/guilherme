@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    <img src="clock.gif" alt="">
+
+    <div id="countdown">
+        <h2>Contagem Regressiva para o Aniversário</h2>
+        <div id="timer"></div>
+    </div>
+    <img src="clock lana.webp" alt="">
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#clock {
+    font-size: 3em;
+    text-align: center;
+    background-color: #34495e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#clock span {
+    display: block;
+}
+
+#clock .time {
+    font-weight: bold;
+}
+
+#clock .label{
+    font-size: 0.8em;
+    color: #bdc3c7;
+}
+
+    </style>
+
+    <script>
+        // Defina a data do aniversário (ano, mês - 1, dia, horas, minutos, segundos)
+const birthday = new Date("2024-04-05T00:00:00");
+
+function updateCountdown() {
+    const now = new Date();
+    const difference = birthday - now;
+
+    if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        document.getElementById("timer").innerHTML = "Feliz Aniversário!";
+    }
+}
+
+// Atualiza a contagem regressiva a cada segundo
+setInterval(updateCountdown, 1000);
+
+// Atualiza a contagem regressiva imediatamente ao carregar a página
+updateCountdown();
+
+    </script>
+</body>
+</html>
